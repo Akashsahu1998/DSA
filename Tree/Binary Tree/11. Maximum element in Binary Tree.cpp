@@ -31,17 +31,24 @@ void levelOrderTraversal(Node *root){
 	}
 }
 
+//int findMax(Node *root){
+//	if(root == NULL)
+//		return -1;
+//	else if(root->left == NULL && root->right == NULL)
+//		return root->key;
+//	else if(root->left != NULL && root->right != NULL)
+//		return max(root->key, max(findMax(root->left), findMax(root->right)));
+//	else if(root->left != NULL)
+//		return max(root->key, findMax(root->left));
+//	else
+//		return max(root->key, findMax(root->right));		
+//}
+
 int findMax(Node *root){
 	if(root == NULL)
-		return -1;
-	else if(root->left == NULL && root->right == NULL)
-		return root->key;
-	else if(root->left != NULL && root->right != NULL)
+		return INT_MIN;
+	else 
 		return max(root->key, max(findMax(root->left), findMax(root->right)));
-	else if(root->left != NULL)
-		return max(root->key, findMax(root->left));
-	else
-		return max(root->key, findMax(root->right));		
 }
 
 int main(){
