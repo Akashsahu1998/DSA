@@ -31,6 +31,30 @@ void levelOrderTraversal(Node *root){
 	}
 }
 
+// Iterative Appoach
+//void leftView(Node *root)
+//{
+//    if(root == NULL) return;
+//    queue<Node*> q;
+//    q.push(root);
+//    
+//    while(!q.empty()){
+//        int size = q.size();
+//        
+//        for(int itr = 0; itr < size; itr++){
+//            Node* cur = q.front();
+//            q.pop();
+//            
+//            if(itr == 0) cout << cur->key << " ";
+//            
+//            if(cur->left != NULL)
+//                q.push(cur->left);
+//            if(cur->right != NULL)
+//                q.push(cur->right);
+//        }
+//    }
+//}
+
 void printLeft(Node* root, int level, int *maxLevel){
 	if(root == NULL) return;
 	if(level > *maxLevel){
