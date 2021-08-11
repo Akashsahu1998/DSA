@@ -31,22 +31,46 @@ void levelOrderTraversal(Node *root){
 	}
 }
 
-void printRight(Node* root, int level, int *maxLevel){
-	if(root == NULL) return;
-	if(level > *maxLevel){
-		cout << root->key << " ";
-		*maxLevel = level;
-	}
-	
-	printRight(root->right, level+1, maxLevel);
-	printRight(root->left, level+1, maxLevel);		
+// Iterative Appoach
+void RightView(Node *root)
+{
+    if(root == NULL) return;
+    queue<Node*> q;
+    q.push(root);
+    
+    while(!q.empty()){
+        int size = q.size();
+        
+        for(int itr = 0; itr < size; itr++){
+            Node* cur = q.front();
+            q.pop();
+            
+            if(itr == size-1) cout << cur->key << " ";
+            
+            if(cur->left != NULL)
+                q.push(cur->left);
+            if(cur->right != NULL)
+                q.push(cur->right);
+        }
+    }
 }
 
-// Recursive Appoach
-void RightView(Node *root){
-	int maxLevel = 0;
-    printRight(root, 1, &maxLevel);
-}
+//void printRight(Node* root, int level, int *maxLevel){
+//	if(root == NULL) return;
+//	if(level > *maxLevel){
+//		cout << root->key << " ";
+//		*maxLevel = level;
+//	}
+//	
+//	printRight(root->right, level+1, maxLevel);
+//	printRight(root->left, level+1, maxLevel);		
+//}
+//
+//// Recursive Appoach
+//void RightView(Node *root){
+//	int maxLevel = 0;
+//    printRight(root, 1, &maxLevel);
+//}
 
 int main(){
 	Node *root = new Node(10);
