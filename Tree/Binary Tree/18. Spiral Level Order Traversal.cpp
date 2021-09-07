@@ -31,6 +31,50 @@ void levelOrderTraversal(Node *root){
 	}
 }
 
+
+// 1st Approach
+// Naive Solution
+// In this solution we are processing item 4 times, enqueue and deque in queue and push and pop in stack
+//void findSpiral(Node *root){
+//    if(root == NULL) return;
+//    queue<Node*> q;
+//    stack<int> s;
+//    bool reverse = false;
+//    q.push(root);
+//    
+//    while(!q.empty()){
+//    	int count = q.size();
+//    	
+//    	for(int i = 0; i < count; i++){
+//    		Node* cur = q.front();
+//    		q.pop();
+//    		
+//    		if(reverse)
+//    			s.push(cur->key);
+//    		else
+//    			cout << cur->key << " ";
+//    			
+//    		if(cur->right != NULL)
+//    			q.push(cur->right);
+//    		if(cur->left != NULL)
+//    			q.push(cur->left);    			
+//		}
+//		
+//		if(reverse){
+//			while(!s.empty()){
+//				cout << s.top() << " ";
+//				s.pop();
+//			}				
+//		}
+//		reverse = !reverse;
+//		cout << "\n";
+//	}
+//}
+
+
+// 2nd Approach
+// Efficient Solution
+// In this solution we are processing item 2 times, push and pop in stack
 void findSpiral(Node *root){
     if(root == NULL) return;
     stack<Node*> stackLeftToRight;
@@ -62,12 +106,13 @@ void findSpiral(Node *root){
 }
 
 int main(){
-	Node *root = new Node(18);
-	root->left = new Node(4);		
-	root->right = new Node(20);
-	root->right->left = new Node(13);
-	root->right->right = new Node(70);
-	root->right->right->left = new Node(80);
+	Node *root=new Node(1);
+	root->left=new Node(2);
+	root->right=new Node(3);
+	root->left->left=new Node(4);
+	root->left->right=new Node(5);
+	root->right->left=new Node(6);
+	root->right->right=new Node(7);
 	
     cout << "Given Tree : ";
     levelOrderTraversal(root);
